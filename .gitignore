@@ -3,6 +3,15 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# DevDocs Copilot - generated data (recreated by running ingestion scripts)
+data/docs/*.md
+data/issues/*.json
+chroma_db/
+!data/docs/.gitkeep
+!data/issues/.gitkeep
+
+
+
 # C extensions
 *.so
 
