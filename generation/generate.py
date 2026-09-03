@@ -12,7 +12,7 @@ from groq import Groq
 load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-MODEL_NAME = "openai/gpt-oss-20b"  # fast + free-tier friendly
+MODEL_NAME = "openai/gpt-oss-20b"  # free-tier friendly +fast (1000 tokens/sec per Groq's docs)
 
 SYSTEM_PROMPT = """You are DevDocs Copilot, an assistant that answers questions about the \
 FastAPI Python framework using ONLY the provided source excerpts.
