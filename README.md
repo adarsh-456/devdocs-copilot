@@ -156,7 +156,7 @@ devdocs-copilot/
 
 ## 8. Roadmap
 
-- [x] **Stage 1** — Ingestion → chunking → embedding → retrieval → generation → UI
+- [done] **Stage 1** — Ingestion → chunking → embedding → retrieval → generation → UI
 - [ ] **Stage 1b** — Hybrid search (BM25 + embeddings) and re-ranking
 - [ ] **Stage 2** — Evaluation harness (RAGAS) with a golden question set
 - [ ] **Stage 3** — Observability with Langfuse tracing

@@ -1,0 +1,1412 @@
+{
+  "dataset_name": "fastapi_docs_golden_v1",
+  "source_archive": "docs.zip",
+  "source_scope": "Supplied FastAPI Markdown documentation",
+  "schema": {
+    "id": "unique question id",
+    "question": "evaluation question",
+    "category": "question type",
+    "expected_source_contains": "documentation file stem(s) expected to contain the evidence",
+    "expected_answer_keypoints": "facts the answer should cover"
+  },
+  "notes": [
+    "Grounded only in the supplied Markdown documentation.",
+    "Includes factual, comparison, diagnostic, tradeoff, workflow, negative, edge-case, security, testing, and deployment questions.",
+    "Negative questions are deliberate: they test whether the RAG system refuses to invent undocumented APIs/behavior.",
+    "expected_source_contains contains file stems, matching files under docs/ in the supplied archive."
+  ],
+  "records": [
+    {
+      "id": "q001",
+      "question": "How do I add a background task in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__background-tasks"
+      ],
+      "expected_answer_keypoints": [
+        "BackgroundTasks class",
+        "declare a BackgroundTasks parameter in the path operation function",
+        "use add_task() to register the task",
+        "background tasks run after the response is sent"
+      ]
+    },
+    {
+      "id": "q002",
+      "question": "Can a FastAPI background task be an async function, or must it be a normal def function?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__background-tasks"
+      ],
+      "expected_answer_keypoints": [
+        "task functions can be async def or normal def",
+        "FastAPI handles either correctly",
+        "the example uses normal def because the file write does not use async/await"
+      ]
+    },
+    {
+      "id": "q003",
+      "question": "What arguments does BackgroundTasks.add_task() accept?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__background-tasks"
+      ],
+      "expected_answer_keypoints": [
+        "the task function",
+        "positional arguments passed to the task function in order",
+        "keyword arguments passed to the task function"
+      ]
+    },
+    {
+      "id": "q004",
+      "question": "Can BackgroundTasks be injected into dependencies as well as path operation functions?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__background-tasks"
+      ],
+      "expected_answer_keypoints": [
+        "BackgroundTasks can be declared at multiple dependency levels",
+        "this includes path operation functions, dependencies, and sub-dependencies",
+        "FastAPI reuses the same object",
+        "background tasks from those levels are merged and run afterwards"
+      ]
+    },
+    {
+      "id": "q005",
+      "question": "When should I consider Celery instead of FastAPI BackgroundTasks?",
+      "category": "tradeoff",
+      "expected_source_contains": [
+        "tutorial__background-tasks"
+      ],
+      "expected_answer_keypoints": [
+        "heavy background computation may benefit from a larger task-processing tool",
+        "especially when the work does not need to run in the same process",
+        "tools such as Celery can run tasks in multiple processes and servers",
+        "they commonly require more configuration and a message/job queue such as RabbitMQ or Redis"
+      ]
+    },
+    {
+      "id": "q006",
+      "question": "How do I declare a path parameter in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__path-params"
+      ],
+      "expected_answer_keypoints": [
+        "declare the parameter in the path operation function",
+        "the parameter name corresponds to the path parameter",
+        "FastAPI extracts the value from the URL"
+      ]
+    },
+    {
+      "id": "q007",
+      "question": "What happens if a FastAPI path parameter is declared as an int but the client sends a non-integer value?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__path-params"
+      ],
+      "expected_answer_keypoints": [
+        "the parameter type is used for validation and conversion",
+        "a value that cannot be converted to the declared type is rejected as invalid input"
+      ]
+    },
+    {
+      "id": "q008",
+      "question": "How can I require a query parameter in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__query-params"
+      ],
+      "expected_answer_keypoints": [
+        "declare the query parameter in the path operation function",
+        "a parameter without a default value is required"
+      ]
+    },
+    {
+      "id": "q009",
+      "question": "How do I make a query parameter optional while still using a type annotation?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__query-params-str-validations",
+        "tutorial__query-params"
+      ],
+      "expected_answer_keypoints": [
+        "use an optional type such as str | None",
+        "provide None as the default when appropriate",
+        "FastAPI treats the parameter as optional"
+      ]
+    },
+    {
+      "id": "q010",
+      "question": "How can I validate that a query parameter has a minimum and maximum length?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__query-params-str-validations"
+      ],
+      "expected_answer_keypoints": [
+        "use Query for additional validation metadata",
+        "minimum and maximum string length can be declared",
+        "FastAPI validates incoming query parameters against those constraints"
+      ]
+    },
+    {
+      "id": "q011",
+      "question": "How do I add numeric validation such as greater-than-or-equal to a FastAPI path parameter?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__path-params-numeric-validations"
+      ],
+      "expected_answer_keypoints": [
+        "use Path for path-parameter metadata and validation",
+        "numeric constraints such as greater-than-or-equal can be declared",
+        "FastAPI validates the incoming value"
+      ]
+    },
+    {
+      "id": "q012",
+      "question": "What is the difference between greater than and greater than or equal numeric validation in FastAPI?",
+      "category": "comparison",
+      "expected_source_contains": [
+        "tutorial__path-params-numeric-validations"
+      ],
+      "expected_answer_keypoints": [
+        "greater-than excludes the boundary value",
+        "greater-than-or-equal allows the boundary value",
+        "FastAPI provides separate validation constraints for these cases"
+      ]
+    },
+    {
+      "id": "q013",
+      "question": "How do I declare a JSON request body using a Pydantic model in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__body"
+      ],
+      "expected_answer_keypoints": [
+        "define a Pydantic model",
+        "use the model as a parameter in the path operation function",
+        "FastAPI reads and validates the request body according to the model"
+      ]
+    },
+    {
+      "id": "q014",
+      "question": "Can a FastAPI endpoint combine path parameters, query parameters, and a request body?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__body"
+      ],
+      "expected_answer_keypoints": [
+        "FastAPI can distinguish path, query, and body parameters",
+        "path parameters are taken from the path",
+        "query parameters are taken from the query string",
+        "a Pydantic model parameter is taken from the request body"
+      ]
+    },
+    {
+      "id": "q015",
+      "question": "How do I declare multiple body parameters in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__body-multiple-params"
+      ],
+      "expected_answer_keypoints": [
+        "multiple parameters can be declared for the request body",
+        "FastAPI builds the expected body structure from those declarations",
+        "the request body can contain multiple named fields corresponding to the parameters"
+      ]
+    },
+    {
+      "id": "q016",
+      "question": "How do I embed a single Pydantic model inside another body object in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__body"
+      ],
+      "expected_answer_keypoints": [
+        "FastAPI normally recognizes a Pydantic model parameter as the request body",
+        "the embed option can be used when a single body parameter should be wrapped under its parameter name"
+      ]
+    },
+    {
+      "id": "q017",
+      "question": "How do nested Pydantic models work in FastAPI request bodies?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__body-nested-models"
+      ],
+      "expected_answer_keypoints": [
+        "Pydantic models can contain other models",
+        "nested structures are declared with model fields",
+        "FastAPI uses the nested model definitions for request validation and OpenAPI schema generation"
+      ]
+    },
+    {
+      "id": "q018",
+      "question": "How can I forbid extra fields in a FastAPI request body model?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__body"
+      ],
+      "expected_answer_keypoints": [
+        "Pydantic model configuration can control handling of extra data",
+        "the model can be configured to forbid extra fields",
+        "validation then rejects unexpected fields"
+      ]
+    },
+    {
+      "id": "q019",
+      "question": "What does a FastAPI response_model do?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__response-model"
+      ],
+      "expected_answer_keypoints": [
+        "it declares the response data model",
+        "FastAPI uses it to validate/filter/serialize the returned data according to the documented response schema",
+        "it also contributes to the generated OpenAPI schema"
+      ]
+    },
+    {
+      "id": "q020",
+      "question": "If my path operation returns more fields than the response model, what is the purpose of the response model?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__response-model"
+      ],
+      "expected_answer_keypoints": [
+        "the response model defines the intended output shape",
+        "FastAPI uses the response model to filter the output to the declared fields"
+      ]
+    },
+    {
+      "id": "q021",
+      "question": "How do I set a custom HTTP status code for a FastAPI path operation?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__response-status-code"
+      ],
+      "expected_answer_keypoints": [
+        "declare the status code on the path operation",
+        "FastAPI uses it as the documented/default response status for that operation"
+      ]
+    },
+    {
+      "id": "q022",
+      "question": "Can I return a different status code from a particular FastAPI request while keeping a default status code?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "advanced__response-change-status-code"
+      ],
+      "expected_answer_keypoints": [
+        "a Response parameter can be used to change the status code dynamically",
+        "the status code can be modified inside the path operation"
+      ]
+    },
+    {
+      "id": "q023",
+      "question": "How do I define a FastAPI dependency with Depends()?",
+      "category": "factual",
+      "expected_source_contains": [
+        "reference__dependencies",
+        "tutorial__dependencies__index"
+      ],
+      "expected_answer_keypoints": [
+        "use Depends() in a parameter declaration",
+        "FastAPI calls the dependency and injects its result into the path operation or another dependency"
+      ]
+    },
+    {
+      "id": "q024",
+      "question": "What is the difference between putting a dependency in a path operation parameter and in the path operation decorator?",
+      "category": "comparison",
+      "expected_source_contains": [
+        "tutorial__dependencies__dependencies-in-path-operation-decorators"
+      ],
+      "expected_answer_keypoints": [
+        "a dependency declared as a parameter can provide a value to the function",
+        "a dependency declared in the decorator is used for its side effects/requirements and its return value is not passed as a function parameter"
+      ]
+    },
+    {
+      "id": "q025",
+      "question": "Can one FastAPI dependency depend on another dependency?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__dependencies__sub-dependencies"
+      ],
+      "expected_answer_keypoints": [
+        "dependencies can have sub-dependencies",
+        "FastAPI builds and resolves the dependency graph",
+        "sub-dependencies can themselves receive injected values"
+      ]
+    },
+    {
+      "id": "q026",
+      "question": "Can the same FastAPI dependency be used multiple times in one request?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__dependencies__sub-dependencies"
+      ],
+      "expected_answer_keypoints": [
+        "FastAPI can reuse the same dependency within a request",
+        "dependency results can be cached for the request unless caching behavior is changed"
+      ]
+    },
+    {
+      "id": "q027",
+      "question": "How can I apply the same dependency to a group of FastAPI path operations?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__dependencies__global-dependencies"
+      ],
+      "expected_answer_keypoints": [
+        "dependencies can be supplied at the router or application level",
+        "they are then applied to the relevant group of path operations"
+      ]
+    },
+    {
+      "id": "q028",
+      "question": "Can a dependency be a class instead of a function in FastAPI?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__dependencies__classes-as-dependencies"
+      ],
+      "expected_answer_keypoints": [
+        "classes can be used as dependencies",
+        "FastAPI can call the class as the dependency",
+        "the constructor parameters participate in dependency injection"
+      ]
+    },
+    {
+      "id": "q029",
+      "question": "How do dependencies with yield work in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__dependencies__dependencies-with-yield"
+      ],
+      "expected_answer_keypoints": [
+        "a dependency can use yield to provide a value",
+        "code after yield is used for cleanup",
+        "FastAPI manages the dependency lifecycle around the request"
+      ]
+    },
+    {
+      "id": "q030",
+      "question": "Can I override a dependency during FastAPI tests?",
+      "category": "testing",
+      "expected_source_contains": [
+        "advanced__testing-dependencies"
+      ],
+      "expected_answer_keypoints": [
+        "use app.dependency_overrides",
+        "map the original dependency to an override callable",
+        "the override is used instead of the original dependency during the test"
+      ]
+    },
+    {
+      "id": "q031",
+      "question": "How do I add a custom HTTP error in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__handling-errors",
+        "reference__exceptions"
+      ],
+      "expected_answer_keypoints": [
+        "raise HTTPException",
+        "provide an HTTP status code",
+        "provide the error detail as appropriate"
+      ]
+    },
+    {
+      "id": "q032",
+      "question": "Should I return or raise HTTPException in FastAPI?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__handling-errors",
+        "reference__exceptions"
+      ],
+      "expected_answer_keypoints": [
+        "HTTPException is raised rather than returned",
+        "raising it interrupts normal path operation execution and produces the error response"
+      ]
+    },
+    {
+      "id": "q033",
+      "question": "What is the difference between FastAPI's HTTPException and Starlette's HTTPException?",
+      "category": "comparison",
+      "expected_source_contains": [
+        "tutorial__handling-errors"
+      ],
+      "expected_answer_keypoints": [
+        "FastAPI provides its own HTTPException",
+        "FastAPI's exception handlers also handle Starlette's HTTPException in relevant cases",
+        "the FastAPI exception is exposed directly from fastapi"
+      ]
+    },
+    {
+      "id": "q034",
+      "question": "How can I customize the handler for HTTPException in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__handling-errors"
+      ],
+      "expected_answer_keypoints": [
+        "register a custom exception handler",
+        "target HTTPException",
+        "the custom handler controls the response generated for that exception"
+      ]
+    },
+    {
+      "id": "q035",
+      "question": "How can I access the validation error body in a FastAPI RequestValidationError handler?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__handling-errors"
+      ],
+      "expected_answer_keypoints": [
+        "RequestValidationError can be handled with a custom exception handler",
+        "the exception contains the validation error information",
+        "the handler can access the request body associated with the validation error"
+      ]
+    },
+    {
+      "id": "q036",
+      "question": "How do I upload a file in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__request-files"
+      ],
+      "expected_answer_keypoints": [
+        "use File and UploadFile for file uploads",
+        "declare the uploaded file as a parameter",
+        "FastAPI handles the multipart form file input"
+      ]
+    },
+    {
+      "id": "q037",
+      "question": "What is UploadFile useful for compared with receiving raw file bytes in FastAPI?",
+      "category": "comparison",
+      "expected_source_contains": [
+        "tutorial__request-files",
+        "reference__uploadfile"
+      ],
+      "expected_answer_keypoints": [
+        "UploadFile provides an uploaded-file interface",
+        "it uses a spooled file so large files do not necessarily stay entirely in memory",
+        "it exposes file metadata and file-like operations"
+      ]
+    },
+    {
+      "id": "q038",
+      "question": "Can FastAPI receive both form fields and uploaded files in the same request?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__request-forms-and-files"
+      ],
+      "expected_answer_keypoints": [
+        "use Form for form fields and File/UploadFile for files",
+        "the request is multipart/form-data",
+        "JSON request bodies cannot be combined with multipart form data in the same request in the usual HTTP encoding"
+      ]
+    },
+    {
+      "id": "q039",
+      "question": "How do I receive form data in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__request-forms"
+      ],
+      "expected_answer_keypoints": [
+        "declare parameters with Form",
+        "the client sends form data",
+        "FastAPI extracts and validates the form fields"
+      ]
+    },
+    {
+      "id": "q040",
+      "question": "How do I read a request header in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__header-params"
+      ],
+      "expected_answer_keypoints": [
+        "declare a parameter using Header",
+        "FastAPI reads the value from the request headers"
+      ]
+    },
+    {
+      "id": "q041",
+      "question": "How can I use a Pydantic model to declare multiple HTTP headers in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__header-param-models"
+      ],
+      "expected_answer_keypoints": [
+        "a Pydantic model can represent a group of headers",
+        "the model is used as a Header parameter",
+        "FastAPI validates the header values using the model"
+      ]
+    },
+    {
+      "id": "q042",
+      "question": "What happens to underscores in FastAPI Header parameter names?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__header-params"
+      ],
+      "expected_answer_keypoints": [
+        "FastAPI converts underscores in Header parameter names to hyphens by default",
+        "convert_underscores can be used to control this behavior"
+      ]
+    },
+    {
+      "id": "q043",
+      "question": "Can FastAPI receive duplicate HTTP headers?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__header-params"
+      ],
+      "expected_answer_keypoints": [
+        "duplicate headers can be declared as a list type",
+        "FastAPI can collect multiple values for the same header name"
+      ]
+    },
+    {
+      "id": "q044",
+      "question": "How do I read a cookie in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__cookie-params"
+      ],
+      "expected_answer_keypoints": [
+        "declare a parameter using Cookie",
+        "FastAPI reads the value from the request cookies"
+      ]
+    },
+    {
+      "id": "q045",
+      "question": "Can I declare multiple cookies using a Pydantic model in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__cookie-param-models"
+      ],
+      "expected_answer_keypoints": [
+        "a Pydantic model can represent cookie parameters",
+        "the model is declared using Cookie",
+        "FastAPI validates the cookie values through the model"
+      ]
+    },
+    {
+      "id": "q046",
+      "question": "How do I enable CORS in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__cors"
+      ],
+      "expected_answer_keypoints": [
+        "use CORSMiddleware",
+        "configure allowed origins and other CORS options as needed",
+        "add the middleware to the FastAPI application"
+      ]
+    },
+    {
+      "id": "q047",
+      "question": "Why might a browser reject a cross-origin FastAPI request even though the endpoint itself works?",
+      "category": "diagnostic",
+      "expected_source_contains": [
+        "tutorial__cors"
+      ],
+      "expected_answer_keypoints": [
+        "CORS is enforced by browsers for cross-origin requests",
+        "the FastAPI application must be configured with appropriate CORS middleware and allowed origins"
+      ]
+    },
+    {
+      "id": "q048",
+      "question": "How do I add middleware to a FastAPI application?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__middleware",
+        "advanced__middleware"
+      ],
+      "expected_answer_keypoints": [
+        "middleware can be added to the FastAPI application",
+        "middleware wraps request/response processing",
+        "FastAPI supports ASGI middleware"
+      ]
+    },
+    {
+      "id": "q049",
+      "question": "In what order are multiple FastAPI middlewares executed?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "tutorial__middleware"
+      ],
+      "expected_answer_keypoints": [
+        "middleware execution has an order",
+        "the order depends on how middleware is added and the middleware stack",
+        "request and response traversal occur in opposite directions through the stack"
+      ]
+    },
+    {
+      "id": "q050",
+      "question": "How do I create an APIRouter for a group of FastAPI routes?",
+      "category": "factual",
+      "expected_source_contains": [
+        "reference__apirouter",
+        "tutorial__bigger-applications"
+      ],
+      "expected_answer_keypoints": [
+        "create an APIRouter",
+        "define path operations on the router",
+        "include the router in the main FastAPI application"
+      ]
+    },
+    {
+      "id": "q051",
+      "question": "How can I organize a large FastAPI application into multiple Python files?",
+      "category": "architecture",
+      "expected_source_contains": [
+        "tutorial__bigger-applications"
+      ],
+      "expected_answer_keypoints": [
+        "use APIRouter to group related path operations",
+        "place routers in separate modules",
+        "include the routers in the main FastAPI application"
+      ]
+    },
+    {
+      "id": "q052",
+      "question": "Can APIRouter have a prefix, tags, and dependencies applied to all its routes?",
+      "category": "factual",
+      "expected_source_contains": [
+        "reference__apirouter"
+      ],
+      "expected_answer_keypoints": [
+        "APIRouter supports a prefix",
+        "APIRouter supports tags",
+        "APIRouter supports dependencies that apply to its path operations"
+      ]
+    },
+    {
+      "id": "q053",
+      "question": "How do I return an HTML response directly from FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "advanced__custom-response"
+      ],
+      "expected_answer_keypoints": [
+        "use HTMLResponse when returning HTML",
+        "the response can be returned directly from the path operation"
+      ]
+    },
+    {
+      "id": "q054",
+      "question": "How do I return a streaming response from FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "advanced__custom-response",
+        "reference__responses"
+      ],
+      "expected_answer_keypoints": [
+        "use StreamingResponse for streaming content",
+        "provide an iterator or async iterator producing the response body"
+      ]
+    },
+    {
+      "id": "q055",
+      "question": "How do I return a file from a FastAPI endpoint?",
+      "category": "factual",
+      "expected_source_contains": [
+        "advanced__custom-response",
+        "reference__responses"
+      ],
+      "expected_answer_keypoints": [
+        "use FileResponse for serving a file",
+        "the response class handles file delivery and relevant response headers"
+      ]
+    },
+    {
+      "id": "q056",
+      "question": "Can a FastAPI path operation return a Response object directly?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "advanced__response-directly",
+        "reference__response"
+      ],
+      "expected_answer_keypoints": [
+        "a path operation can return a Response directly",
+        "returning a Response bypasses the normal data conversion path for that response object",
+        "the response object controls the response details"
+      ]
+    },
+    {
+      "id": "q057",
+      "question": "How can I set a custom response header in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "advanced__response-headers"
+      ],
+      "expected_answer_keypoints": [
+        "use a Response parameter to modify headers",
+        "set the desired header before returning"
+      ]
+    },
+    {
+      "id": "q058",
+      "question": "How do I set a cookie on a FastAPI response?",
+      "category": "factual",
+      "expected_source_contains": [
+        "advanced__response-cookies"
+      ],
+      "expected_answer_keypoints": [
+        "use a Response object",
+        "call set_cookie with the desired cookie information"
+      ]
+    },
+    {
+      "id": "q059",
+      "question": "How do I define HTTP Basic authentication in FastAPI?",
+      "category": "security",
+      "expected_source_contains": [
+        "advanced__security__http-basic-auth"
+      ],
+      "expected_answer_keypoints": [
+        "use HTTPBasic",
+        "FastAPI extracts Basic authentication credentials",
+        "the dependency can be used to require HTTP Basic authentication"
+      ]
+    },
+    {
+      "id": "q060",
+      "question": "How do I create a simple OAuth2 password-and-bearer flow in FastAPI?",
+      "category": "security",
+      "expected_source_contains": [
+        "tutorial__security__simple-oauth2"
+      ],
+      "expected_answer_keypoints": [
+        "use OAuth2PasswordBearer for bearer-token extraction",
+        "define an OAuth2 password flow endpoint",
+        "the bearer token is supplied through the Authorization header"
+      ]
+    },
+    {
+      "id": "q061",
+      "question": "How do I get the current user from a bearer token in FastAPI?",
+      "category": "security",
+      "expected_source_contains": [
+        "tutorial__security__get-current-user"
+      ],
+      "expected_answer_keypoints": [
+        "create a dependency that receives the token from OAuth2PasswordBearer",
+        "decode or interpret the token according to the application's authentication logic",
+        "return the current user from the dependency"
+      ]
+    },
+    {
+      "id": "q062",
+      "question": "What are OAuth2 scopes used for in FastAPI?",
+      "category": "security",
+      "expected_source_contains": [
+        "advanced__security__oauth2-scopes"
+      ],
+      "expected_answer_keypoints": [
+        "scopes represent permissions",
+        "FastAPI can declare required scopes with Security",
+        "SecurityScopes exposes the scopes required by the dependency chain"
+      ]
+    },
+    {
+      "id": "q063",
+      "question": "What is the role of SecurityScopes in FastAPI OAuth2 scope handling?",
+      "category": "security",
+      "expected_source_contains": [
+        "advanced__security__oauth2-scopes"
+      ],
+      "expected_answer_keypoints": [
+        "SecurityScopes provides the scopes required by the current operation/dependency context",
+        "a dependency can inspect those scopes when validating authorization"
+      ]
+    },
+    {
+      "id": "q064",
+      "question": "How do I test a FastAPI application with TestClient?",
+      "category": "testing",
+      "expected_source_contains": [
+        "tutorial__testing",
+        "reference__testclient"
+      ],
+      "expected_answer_keypoints": [
+        "use TestClient",
+        "create a client for the FastAPI application",
+        "make HTTP requests through the client and inspect the response"
+      ]
+    },
+    {
+      "id": "q065",
+      "question": "How do I test asynchronous FastAPI endpoints?",
+      "category": "testing",
+      "expected_source_contains": [
+        "advanced__async-tests"
+      ],
+      "expected_answer_keypoints": [
+        "async tests can be written for FastAPI",
+        "use an async-compatible HTTP client/testing approach",
+        "the test itself can be async"
+      ]
+    },
+    {
+      "id": "q066",
+      "question": "How do I test FastAPI lifespan startup and shutdown behavior?",
+      "category": "testing",
+      "expected_source_contains": [
+        "advanced__testing-events"
+      ],
+      "expected_answer_keypoints": [
+        "lifespan events can be tested",
+        "the test client/context manager can trigger application startup and shutdown",
+        "startup and shutdown behavior should be asserted within the test lifecycle"
+      ]
+    },
+    {
+      "id": "q067",
+      "question": "How do I test a FastAPI WebSocket endpoint?",
+      "category": "testing",
+      "expected_source_contains": [
+        "advanced__testing-websockets"
+      ],
+      "expected_answer_keypoints": [
+        "TestClient provides WebSocket testing support",
+        "connect to the WebSocket endpoint with the client",
+        "send and receive WebSocket messages in the test"
+      ]
+    },
+    {
+      "id": "q068",
+      "question": "How do FastAPI lifespan events replace older startup and shutdown event handlers?",
+      "category": "architecture",
+      "expected_source_contains": [
+        "advanced__events"
+      ],
+      "expected_answer_keypoints": [
+        "FastAPI supports lifespan for application startup/shutdown logic",
+        "the lifespan function surrounds the application lifetime",
+        "startup logic occurs before yielding and shutdown logic after yielding"
+      ]
+    },
+    {
+      "id": "q069",
+      "question": "How can I mount a separate FastAPI application under a path?",
+      "category": "advanced",
+      "expected_source_contains": [
+        "advanced__sub-applications"
+      ],
+      "expected_answer_keypoints": [
+        "use mount to attach a sub-application",
+        "the mounted application is served under the specified path",
+        "the sub-application has its own routes and OpenAPI/docs behavior"
+      ]
+    },
+    {
+      "id": "q070",
+      "question": "How do I serve static files from FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__static-files",
+        "reference__staticfiles"
+      ],
+      "expected_answer_keypoints": [
+        "use StaticFiles",
+        "mount StaticFiles at a path",
+        "the directory containing static assets is supplied to StaticFiles"
+      ]
+    },
+    {
+      "id": "q071",
+      "question": "How do I run FastAPI in development mode using the FastAPI CLI?",
+      "category": "deployment",
+      "expected_source_contains": [
+        "fastapi-cli"
+      ],
+      "expected_answer_keypoints": [
+        "use fastapi dev",
+        "the CLI discovers/configures the application entry point",
+        "development mode provides the development server behavior described by the CLI docs"
+      ]
+    },
+    {
+      "id": "q072",
+      "question": "How do I run a FastAPI application in production using the FastAPI CLI?",
+      "category": "deployment",
+      "expected_source_contains": [
+        "fastapi-cli"
+      ],
+      "expected_answer_keypoints": [
+        "use fastapi run",
+        "the CLI starts the application for production use",
+        "the application entry point can be discovered or explicitly configured"
+      ]
+    },
+    {
+      "id": "q073",
+      "question": "How do I configure a FastAPI app entry point in pyproject.toml?",
+      "category": "deployment",
+      "expected_source_contains": [
+        "fastapi-cli"
+      ],
+      "expected_answer_keypoints": [
+        "the FastAPI CLI supports configuring the application entry point in pyproject.toml",
+        "the configured entry point identifies the FastAPI application for CLI commands"
+      ]
+    },
+    {
+      "id": "q074",
+      "question": "Why would I use multiple worker processes when deploying FastAPI?",
+      "category": "deployment",
+      "expected_source_contains": [
+        "deployment__server-workers"
+      ],
+      "expected_answer_keypoints": [
+        "multiple workers allow multiple processes to serve requests",
+        "workers can use multiple CPU cores",
+        "each worker is a separate process"
+      ]
+    },
+    {
+      "id": "q075",
+      "question": "What is the difference between running one FastAPI process and multiple workers?",
+      "category": "comparison",
+      "expected_source_contains": [
+        "deployment__server-workers"
+      ],
+      "expected_answer_keypoints": [
+        "one worker means one server process",
+        "multiple workers mean multiple server processes",
+        "workers do not share process memory in the same way as threads"
+      ]
+    },
+    {
+      "id": "q076",
+      "question": "How does FastAPI use environment variables for settings?",
+      "category": "configuration",
+      "expected_source_contains": [
+        "advanced__settings",
+        "environment-variables"
+      ],
+      "expected_answer_keypoints": [
+        "application settings can be loaded from environment variables",
+        "settings can be represented with typed configuration models",
+        "a .env file can be used when configured through the documented settings approach"
+      ]
+    },
+    {
+      "id": "q077",
+      "question": "How do I read a .env file for FastAPI settings?",
+      "category": "configuration",
+      "expected_source_contains": [
+        "advanced__settings"
+      ],
+      "expected_answer_keypoints": [
+        "the settings model can be configured to read a .env file",
+        "the documented settings approach uses environment variables and a dotenv file"
+      ]
+    },
+    {
+      "id": "q078",
+      "question": "How do I convert arbitrary Pydantic data into JSON-compatible data in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__encoder",
+        "reference__encoders"
+      ],
+      "expected_answer_keypoints": [
+        "use jsonable_encoder",
+        "it converts data into JSON-compatible Python types",
+        "it is useful before storing or otherwise handling data that must be JSON compatible"
+      ]
+    },
+    {
+      "id": "q079",
+      "question": "Why would I use jsonable_encoder instead of simply calling json.dumps on a Pydantic model?",
+      "category": "comparison",
+      "expected_source_contains": [
+        "tutorial__encoder"
+      ],
+      "expected_answer_keypoints": [
+        "jsonable_encoder produces JSON-compatible Python data",
+        "it is intended for converting objects such as Pydantic models before encoding/storing them",
+        "it is not itself the final JSON string encoder"
+      ]
+    },
+    {
+      "id": "q080",
+      "question": "What is FastAPI's default automatic documentation based on?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__metadata",
+        "reference__openapi__index"
+      ],
+      "expected_answer_keypoints": [
+        "FastAPI generates an OpenAPI schema",
+        "the generated schema powers the interactive API documentation",
+        "documentation metadata and URLs can be configured"
+      ]
+    },
+    {
+      "id": "q081",
+      "question": "How can I change the URLs used for FastAPI's automatic documentation?",
+      "category": "configuration",
+      "expected_source_contains": [
+        "tutorial__metadata"
+      ],
+      "expected_answer_keypoints": [
+        "FastAPI's docs URLs can be configured on the application",
+        "the OpenAPI URL and documentation UI URLs can be customized"
+      ]
+    },
+    {
+      "id": "q082",
+      "question": "How can I disable automatic FastAPI documentation?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "how-to__configure-swagger-ui"
+      ],
+      "expected_answer_keypoints": [
+        "FastAPI allows the automatic documentation URLs to be disabled",
+        "the application can be configured so the built-in docs are not exposed at their default URLs"
+      ]
+    },
+    {
+      "id": "q083",
+      "question": "How do I create an OpenAPI callback in FastAPI?",
+      "category": "advanced",
+      "expected_source_contains": [
+        "advanced__openapi-callbacks"
+      ],
+      "expected_answer_keypoints": [
+        "callbacks are represented in the OpenAPI schema",
+        "FastAPI provides an APIRouter-based callback mechanism",
+        "the callback describes an HTTP request the API may make to a URL supplied by the client"
+      ]
+    },
+    {
+      "id": "q084",
+      "question": "What is an OpenAPI webhook in FastAPI, and how is it different from a normal path operation?",
+      "category": "comparison",
+      "expected_source_contains": [
+        "advanced__openapi-webhooks"
+      ],
+      "expected_answer_keypoints": [
+        "FastAPI can document webhooks in OpenAPI",
+        "webhooks describe incoming operations that an external service may call",
+        "webhook definitions are separate from the application's normal incoming path operations"
+      ]
+    },
+    {
+      "id": "q085",
+      "question": "How do I stream data from a FastAPI endpoint?",
+      "category": "factual",
+      "expected_source_contains": [
+        "advanced__stream-data"
+      ],
+      "expected_answer_keypoints": [
+        "FastAPI supports streaming response data",
+        "a streaming response can consume an iterator or async iterator",
+        "data is sent incrementally rather than requiring the entire body to be constructed first"
+      ]
+    },
+    {
+      "id": "q086",
+      "question": "How do Server-Sent Events work in FastAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "tutorial__server-sent-events",
+        "reference__sse"
+      ],
+      "expected_answer_keypoints": [
+        "SSE keeps an HTTP connection open for server-to-client events",
+        "FastAPI provides SSE support through EventSourceResponse/ServerSentEvent in the documented API",
+        "events are sent from the server to the client over the connection"
+      ]
+    },
+    {
+      "id": "q087",
+      "question": "How do I access the raw Request object in FastAPI?",
+      "category": "advanced",
+      "expected_source_contains": [
+        "advanced__using-request-directly",
+        "reference__request"
+      ],
+      "expected_answer_keypoints": [
+        "declare a Request parameter",
+        "FastAPI injects the Request object",
+        "the Request object provides direct access to request details"
+      ]
+    },
+    {
+      "id": "q088",
+      "question": "When would I use Request directly instead of declaring individual FastAPI parameters?",
+      "category": "tradeoff",
+      "expected_source_contains": [
+        "advanced__using-request-directly"
+      ],
+      "expected_answer_keypoints": [
+        "use Request when direct access to the raw request is needed",
+        "individual parameters are generally preferred when FastAPI's validation/documentation features are desired",
+        "using Request directly bypasses some of the automatic parameter declaration behavior"
+      ]
+    },
+    {
+      "id": "q089",
+      "question": "How can I include a WSGI application such as Flask inside FastAPI?",
+      "category": "advanced",
+      "expected_source_contains": [
+        "advanced__wsgi"
+      ],
+      "expected_answer_keypoints": [
+        "use WSGIMiddleware",
+        "mount the WSGI application under a path",
+        "this allows WSGI applications such as Flask or Django to be included in an ASGI application"
+      ]
+    },
+    {
+      "id": "q090",
+      "question": "Can FastAPI serve Jinja2 templates?",
+      "category": "factual",
+      "expected_source_contains": [
+        "advanced__templates",
+        "reference__templating"
+      ],
+      "expected_answer_keypoints": [
+        "use Jinja2Templates",
+        "configure the templates directory",
+        "return a template response with the request and template context"
+      ]
+    },
+    {
+      "id": "q091",
+      "question": "How can I customize FastAPI's generated OpenAPI schema?",
+      "category": "advanced",
+      "expected_source_contains": [
+        "how-to__extending-openapi"
+      ],
+      "expected_answer_keypoints": [
+        "FastAPI exposes the OpenAPI schema generation mechanism",
+        "the application OpenAPI schema can be overridden/customized",
+        "custom schema data can be added before returning the schema"
+      ]
+    },
+    {
+      "id": "q092",
+      "question": "How can I conditionally expose OpenAPI documentation based on environment or settings?",
+      "category": "configuration",
+      "expected_source_contains": [
+        "how-to__conditional-openapi"
+      ],
+      "expected_answer_keypoints": [
+        "the OpenAPI URL can be conditionally configured",
+        "application settings/environment variables can determine whether OpenAPI and docs are available"
+      ]
+    },
+    {
+      "id": "q093",
+      "question": "What does APIRouter's response_model parameter control?",
+      "category": "edge_case",
+      "expected_source_contains": [
+        "reference__apirouter"
+      ],
+      "expected_answer_keypoints": [
+        "APIRouter path operation decorators support response model configuration",
+        "the response model documents and validates the returned data for the operation"
+      ]
+    },
+    {
+      "id": "q094",
+      "question": "How do I mark a FastAPI path operation as deprecated in OpenAPI?",
+      "category": "factual",
+      "expected_source_contains": [
+        "advanced__path-operation-advanced-configuration"
+      ],
+      "expected_answer_keypoints": [
+        "path operation decorators support deprecation metadata",
+        "deprecated operations are represented as deprecated in the generated OpenAPI documentation"
+      ]
+    },
+    {
+      "id": "q095",
+      "question": "How can FastAPI return a 202 Accepted response and then process data in the background?",
+      "category": "workflow",
+      "expected_source_contains": [
+        "tutorial__background-tasks"
+      ],
+      "expected_answer_keypoints": [
+        "the docs give slow file processing as an example",
+        "the endpoint can return HTTP 202 Accepted",
+        "the processing can happen in a BackgroundTasks task after the response is returned"
+      ]
+    },
+    {
+      "id": "q096",
+      "question": "Are FastAPI BackgroundTasks intended for heavy distributed background computation?",
+      "category": "negative",
+      "expected_source_contains": [
+        "tutorial__background-tasks"
+      ],
+      "expected_answer_keypoints": [
+        "the docs caution against using BackgroundTasks for heavy computation when it need not run in the same process",
+        "larger tools such as Celery may be more appropriate",
+        "those tools can run work across multiple processes and servers"
+      ]
+    },
+    {
+      "id": "q097",
+      "question": "Does FastAPI BackgroundTasks mean the client waits for the task to finish before receiving the response?",
+      "category": "negative",
+      "expected_source_contains": [
+        "tutorial__background-tasks"
+      ],
+      "expected_answer_keypoints": [
+        "the purpose is to perform work after returning the response",
+        "the client does not have to wait for the background operation to complete before receiving the response"
+      ]
+    },
+    {
+      "id": "q098",
+      "question": "Does BackgroundTasks.run_before_response exist as the documented FastAPI API for scheduling a task?",
+      "category": "negative",
+      "expected_source_contains": [
+        "reference__background",
+        "tutorial__background-tasks"
+      ],
+      "expected_answer_keypoints": [
+        "the documented scheduling method is add_task()",
+        "the docs do not describe a run_before_response API for BackgroundTasks"
+      ]
+    },
+    {
+      "id": "q099",
+      "question": "If I need to send an email notification after an API action, what FastAPI feature do the docs recommend for a small background task?",
+      "category": "use_case",
+      "expected_source_contains": [
+        "tutorial__background-tasks"
+      ],
+      "expected_answer_keypoints": [
+        "BackgroundTasks",
+        "send the notification after returning the response",
+        "the docs use email notifications as an example of a small background task"
+      ]
+    },
+    {
+      "id": "q100",
+      "question": "Where does FastAPI's BackgroundTasks class come from technically?",
+      "category": "technical_detail",
+      "expected_source_contains": [
+        "tutorial__background-tasks",
+        "reference__background"
+      ],
+      "expected_answer_keypoints": [
+        "BackgroundTasks comes from Starlette's background implementation",
+        "FastAPI exposes BackgroundTasks directly from fastapi",
+        "using BackgroundTasks avoids accidentally importing Starlette's singular BackgroundTask when dependency injection is desired"
+      ]
+    },
+    {
+        "id": "q101",
+        "question": "Why might CORSMiddleware appear to not work for some FastAPI users?",
+        "category": "issue_based",
+        "expected_source_contains": ["1663"],
+        "expected_answer_keypoints": ["CORS preflight requests", "middleware configuration order", "allow_origins settings"]
+    },
+    {
+        "id": "q102",
+        "question": "Why does memory usage grow over time in a FastAPI app, potentially leading to OOM?",
+        "category": "issue_based",
+        "expected_source_contains": ["1624"],
+        "expected_answer_keypoints": ["memory leak under load", "possible worker/process accumulation", "OOM risk over time"]
+    },
+    {
+        "id": "q103",
+        "question": "Does FastAPI support returning a msgpack response if the client requests application/x-msgpack?",
+        "category": "issue_based",
+        "expected_source_contains": ["521"],
+        "expected_answer_keypoints": ["not built-in by default", "custom response class needed", "content negotiation"]
+    },
+    {
+        "id": "q104",
+        "question": "What were the discussions around further developing FastAPI's startup and shutdown events?",
+        "category": "issue_based",
+        "expected_source_contains": ["617"],
+        "expected_answer_keypoints": ["limitations of on_event", "need for more flexible lifecycle handling", "led toward lifespan approach"]
+    },
+    {
+        "id": "q105",
+        "question": "Why might Gunicorn workers hang or consume memory indefinitely when running a FastAPI app?",
+        "category": "issue_based",
+        "expected_source_contains": ["596"],
+        "expected_answer_keypoints": ["worker hang under certain conditions", "memory consumption growth", "possible worker restart/config mitigation"]
+    },
+    {
+        "id": "q106",
+        "question": "Is there documentation covering the ApiKey Header authentication scheme in FastAPI?",
+        "category": "issue_based",
+        "expected_source_contains": ["142"],
+        "expected_answer_keypoints": ["ApiKey header security scheme", "documentation gap noted", "security utilities in FastAPI"]
+    },
+    {
+        "id": "q107",
+        "question": "Can FastAPI provide timing data for work it does outside of user code?",
+        "category": "issue_based",
+        "expected_source_contains": ["701"],
+        "expected_answer_keypoints": ["framework-level timing/overhead", "not exposed by default", "middleware-based timing suggested"]
+    },
+    {
+        "id": "q108",
+        "question": "Why does passing an UploadFile into a StreamingResponse cause issues?",
+        "category": "issue_based",
+        "expected_source_contains": ["10857"],
+        "expected_answer_keypoints": ["file object gets closed prematurely", "StreamingResponse lifecycle", "workaround needed for streaming uploads"]
+    },
+    {
+        "id": "q109",
+        "question": "How can I integrate an external OAuth provider with FastAPI?",
+        "category": "issue_based",
+        "expected_source_contains": ["12"],
+        "expected_answer_keypoints": ["OAuth2 flows", "external provider integration", "not fully built-in, needs custom wiring"]
+    },
+    {
+        "id": "q110",
+        "question": "Does FastAPI have built-in support for socket.io?",
+        "category": "issue_based",
+        "expected_source_contains": ["129"],
+        "expected_answer_keypoints": ["not natively supported", "requires third-party integration", "ASGI compatibility considerations"]
+    },
+    {
+        "id": "q111",
+        "question": "How can I implement a singleton-style dependency using FastAPI's dependency injection?",
+        "category": "issue_based",
+        "expected_source_contains": ["504"],
+        "expected_answer_keypoints": ["dependency caching within a request", "not a true app-wide singleton by default", "workarounds discussed"]
+    },
+    {
+        "id": "q112",
+        "question": "What causes a BrokenResourceError in a FastAPI application?",
+        "category": "issue_based",
+        "expected_source_contains": ["4041"],
+        "expected_answer_keypoints": ["underlying async stream/connection issue", "often related to client disconnects", "Starlette/anyio internals"]
+    },
+    {
+        "id": "q113",
+        "question": "Can I use Pydantic models to define GET request query parameters in FastAPI?",
+        "category": "issue_based",
+        "expected_source_contains": ["318"],
+        "expected_answer_keypoints": ["not directly supported the same way as request bodies", "workarounds using Depends", "later versions may improve this"]
+    },
+    {
+        "id": "q114",
+        "question": "Why are context managers inside Depends() broken after a certain FastAPI version?",
+        "category": "issue_based",
+        "expected_source_contains": ["11143"],
+        "expected_answer_keypoints": ["regression after version 0.106", "context manager dependency behavior changed", "known bug discussion"]
+    }
+    
+  ]
+}
