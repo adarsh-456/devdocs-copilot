@@ -31,7 +31,10 @@ def get_model():
 
 def get_collection():
     client = chromadb.PersistentClient(path=str(PERSIST_DIR))
-    return client.get_or_create_collection(COLLECTION_NAME)
+    return client.get_or_create_collection(
+        COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"},
+    )
 
 
 def build_index(batch_size: int = 64):
