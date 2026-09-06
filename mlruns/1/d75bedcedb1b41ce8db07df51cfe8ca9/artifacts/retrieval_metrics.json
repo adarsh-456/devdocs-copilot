@@ -1,0 +1,1248 @@
+{
+  "overall": {
+    "n": 114,
+    "hit_rate": 0.9035087719298246,
+    "mrr": 0.7858187134502923,
+    "precision": 0.42105263157894735
+  },
+  "by_category": {
+    "factual": {
+      "n": 42,
+      "hit_rate": 0.8571428571428571,
+      "mrr": 0.7261904761904762,
+      "precision": 0.44761904761904764
+    },
+    "edge_case": {
+      "n": 17,
+      "hit_rate": 0.8823529411764706,
+      "mrr": 0.7450980392156863,
+      "precision": 0.4470588235294118
+    },
+    "issue_based": {
+      "n": 14,
+      "hit_rate": 1.0,
+      "mrr": 0.9285714285714286,
+      "precision": 0.4
+    },
+    "comparison": {
+      "n": 7,
+      "hit_rate": 1.0,
+      "mrr": 0.9285714285714286,
+      "precision": 0.39999999999999997
+    },
+    "testing": {
+      "n": 5,
+      "hit_rate": 0.6,
+      "mrr": 0.6,
+      "precision": 0.27999999999999997
+    },
+    "security": {
+      "n": 5,
+      "hit_rate": 0.8,
+      "mrr": 0.5666666666666667,
+      "precision": 0.2
+    },
+    "advanced": {
+      "n": 5,
+      "hit_rate": 1.0,
+      "mrr": 0.9,
+      "precision": 0.44000000000000006
+    },
+    "deployment": {
+      "n": 4,
+      "hit_rate": 1.0,
+      "mrr": 0.875,
+      "precision": 0.4
+    },
+    "configuration": {
+      "n": 4,
+      "hit_rate": 1.0,
+      "mrr": 0.8125,
+      "precision": 0.4
+    },
+    "negative": {
+      "n": 3,
+      "hit_rate": 1.0,
+      "mrr": 1.0,
+      "precision": 0.5333333333333333
+    },
+    "tradeoff": {
+      "n": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0,
+      "precision": 0.4
+    },
+    "architecture": {
+      "n": 2,
+      "hit_rate": 1.0,
+      "mrr": 1.0,
+      "precision": 0.2
+    },
+    "diagnostic": {
+      "n": 1,
+      "hit_rate": 1.0,
+      "mrr": 0.5,
+      "precision": 0.6
+    },
+    "workflow": {
+      "n": 1,
+      "hit_rate": 1.0,
+      "mrr": 0.3333333333333333,
+      "precision": 0.4
+    },
+    "use_case": {
+      "n": 1,
+      "hit_rate": 1.0,
+      "mrr": 1.0,
+      "precision": 0.8
+    },
+    "technical_detail": {
+      "n": 1,
+      "hit_rate": 1.0,
+      "mrr": 1.0,
+      "precision": 0.8
+    }
+  },
+  "per_question": [
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q001",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q002",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q003",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q004",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q005",
+      "category": "tradeoff"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q006",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q007",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q008",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q009",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q010",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q011",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q012",
+      "category": "comparison"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q013",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q014",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q015",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q016",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.3333333333333333,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q017",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q018",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q019",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 1.0,
+      "num_matches": 5,
+      "num_retrieved": 5,
+      "id": "q020",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.3333333333333333,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q021",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.3333333333333333,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q022",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q023",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q024",
+      "category": "comparison"
+    },
+    {
+      "scored": true,
+      "hit": false,
+      "mrr": 0.0,
+      "precision": 0.0,
+      "num_matches": 0,
+      "num_retrieved": 5,
+      "id": "q025",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q026",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.3333333333333333,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q027",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.3333333333333333,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q028",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q029",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q030",
+      "category": "testing"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q031",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 1.0,
+      "num_matches": 5,
+      "num_retrieved": 5,
+      "id": "q032",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q033",
+      "category": "comparison"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q034",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q035",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q036",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q037",
+      "category": "comparison"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q038",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q039",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": false,
+      "mrr": 0.0,
+      "precision": 0.0,
+      "num_matches": 0,
+      "num_retrieved": 5,
+      "id": "q040",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q041",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q042",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q043",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.25,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q044",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q045",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q046",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q047",
+      "category": "diagnostic"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q048",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q049",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q050",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q051",
+      "category": "architecture"
+    },
+    {
+      "scored": true,
+      "hit": false,
+      "mrr": 0.0,
+      "precision": 0.0,
+      "num_matches": 0,
+      "num_retrieved": 5,
+      "id": "q052",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q053",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q054",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": false,
+      "mrr": 0.0,
+      "precision": 0.0,
+      "num_matches": 0,
+      "num_retrieved": 5,
+      "id": "q055",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q056",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q057",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q058",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.3333333333333333,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q059",
+      "category": "security"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q060",
+      "category": "security"
+    },
+    {
+      "scored": true,
+      "hit": false,
+      "mrr": 0.0,
+      "precision": 0.0,
+      "num_matches": 0,
+      "num_retrieved": 5,
+      "id": "q061",
+      "category": "security"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q062",
+      "category": "security"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q063",
+      "category": "security"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q064",
+      "category": "testing"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q065",
+      "category": "testing"
+    },
+    {
+      "scored": true,
+      "hit": false,
+      "mrr": 0.0,
+      "precision": 0.0,
+      "num_matches": 0,
+      "num_retrieved": 5,
+      "id": "q066",
+      "category": "testing"
+    },
+    {
+      "scored": true,
+      "hit": false,
+      "mrr": 0.0,
+      "precision": 0.0,
+      "num_matches": 0,
+      "num_retrieved": 5,
+      "id": "q067",
+      "category": "testing"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q068",
+      "category": "architecture"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q069",
+      "category": "advanced"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q070",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q071",
+      "category": "deployment"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q072",
+      "category": "deployment"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q073",
+      "category": "deployment"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q074",
+      "category": "deployment"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q075",
+      "category": "comparison"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q076",
+      "category": "configuration"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.25,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q077",
+      "category": "configuration"
+    },
+    {
+      "scored": true,
+      "hit": false,
+      "mrr": 0.0,
+      "precision": 0.0,
+      "num_matches": 0,
+      "num_retrieved": 5,
+      "id": "q078",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q079",
+      "category": "comparison"
+    },
+    {
+      "scored": true,
+      "hit": false,
+      "mrr": 0.0,
+      "precision": 0.0,
+      "num_matches": 0,
+      "num_retrieved": 5,
+      "id": "q080",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q081",
+      "category": "configuration"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q086",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q104",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": false,
+      "mrr": 0.0,
+      "precision": 0.0,
+      "num_matches": 0,
+      "num_retrieved": 5,
+      "id": "q082",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q083",
+      "category": "advanced"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q084",
+      "category": "comparison"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.25,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q085",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q087",
+      "category": "advanced"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q088",
+      "category": "tradeoff"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q089",
+      "category": "advanced"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q090",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q091",
+      "category": "advanced"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q092",
+      "category": "configuration"
+    },
+    {
+      "scored": true,
+      "hit": false,
+      "mrr": 0.0,
+      "precision": 0.0,
+      "num_matches": 0,
+      "num_retrieved": 5,
+      "id": "q093",
+      "category": "edge_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q094",
+      "category": "factual"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.3333333333333333,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q095",
+      "category": "workflow"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q096",
+      "category": "negative"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q097",
+      "category": "negative"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q098",
+      "category": "negative"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q099",
+      "category": "use_case"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q100",
+      "category": "technical_detail"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q101",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q102",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.8,
+      "num_matches": 4,
+      "num_retrieved": 5,
+      "id": "q103",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q105",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q106",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q107",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q108",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.6,
+      "num_matches": 3,
+      "num_retrieved": 5,
+      "id": "q109",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 0.5,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q110",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q111",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q112",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.4,
+      "num_matches": 2,
+      "num_retrieved": 5,
+      "id": "q113",
+      "category": "issue_based"
+    },
+    {
+      "scored": true,
+      "hit": true,
+      "mrr": 1.0,
+      "precision": 0.2,
+      "num_matches": 1,
+      "num_retrieved": 5,
+      "id": "q114",
+      "category": "issue_based"
+    }
+  ]
+}
