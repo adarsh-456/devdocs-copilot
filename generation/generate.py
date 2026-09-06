@@ -59,7 +59,8 @@ def generate_answer(question: str, chunks: list[dict]) -> str:
             {"role": "user", "content": prompt},
         ],
         temperature=0.1,
-        max_tokens=600,
+        max_tokens=500,
+        reasoning_effort="low",
     )
     return response.choices[0].message.content
 

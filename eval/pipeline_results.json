@@ -3980,6 +3980,6 @@
       0.780221700668335,
       0.7591856718063354
     ],
-    "generated_answer": ""
+    "generated_answer": "The problem was reported in the FastAPI GitHub issue\u202f#11143.  \nAfter upgrading to FastAPI\u202f0.106, context\u2011manager dependencies that are passed to `Depends()` no longer work \u2013 the `__aenter__` and `__aexit__` methods are not called as expected. The issue is still open and the discussion is linked in the issue thread\u202f[Source\u202f1]. No official fix or workaround has been documented in the current FastAPI documentation or release notes."
   }
 ]

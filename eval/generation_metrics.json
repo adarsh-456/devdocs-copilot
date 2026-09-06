@@ -1,0 +1,149 @@
+{
+  "summary": {
+    "sample_size": 20,
+    "avg_faithfulness": 0.7944940476190476,
+    "avg_answer_relevancy": 0.9025315281202031
+  },
+  "per_question": [
+    {
+      "id": "q096",
+      "category": "negative",
+      "question": "Are FastAPI BackgroundTasks intended for heavy distributed background computation?",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9563438415328616
+    },
+    {
+      "id": "q062",
+      "category": "security",
+      "question": "What are OAuth2 scopes used for in FastAPI?",
+      "faithfulness": null,
+      "answer_relevancy": 0.9799045638153503
+    },
+    {
+      "id": "q085",
+      "category": "factual",
+      "question": "How do I stream data from a FastAPI endpoint?",
+      "faithfulness": null,
+      "answer_relevancy": 0.9524298185454239
+    },
+    {
+      "id": "q014",
+      "category": "edge_case",
+      "question": "Can a FastAPI endpoint combine path parameters, query parameters, and a request body?",
+      "faithfulness": 0.625,
+      "answer_relevancy": 0.9299875148050164
+    },
+    {
+      "id": "q051",
+      "category": "architecture",
+      "question": "How can I organize a large FastAPI application into multiple Python files?",
+      "faithfulness": null,
+      "answer_relevancy": 0.9130100183408579
+    },
+    {
+      "id": "q083",
+      "category": "advanced",
+      "question": "How do I create an OpenAPI callback in FastAPI?",
+      "faithfulness": null,
+      "answer_relevancy": 0.9777932502629106
+    },
+    {
+      "id": "q034",
+      "category": "factual",
+      "question": "How can I customize the handler for HTTPException in FastAPI?",
+      "faithfulness": null,
+      "answer_relevancy": 0.9186328671632968
+    },
+    {
+      "id": "q114",
+      "category": "issue_based",
+      "question": "Why are context managers inside Depends() broken after a certain FastAPI version?",
+      "faithfulness": null,
+      "answer_relevancy": 0.0
+    },
+    {
+      "id": "q088",
+      "category": "tradeoff",
+      "question": "When would I use Request directly instead of declaring individual FastAPI parameters?",
+      "faithfulness": 0.6666666666666666,
+      "answer_relevancy": 0.8884112427694387
+    },
+    {
+      "id": "q016",
+      "category": "factual",
+      "question": "How do I embed a single Pydantic model inside another body object in FastAPI?",
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.9996282651824098
+    },
+    {
+      "id": "q008",
+      "category": "factual",
+      "question": "How can I require a query parameter in FastAPI?",
+      "faithfulness": null,
+      "answer_relevancy": 0.9864220628362371
+    },
+    {
+      "id": "q095",
+      "category": "workflow",
+      "question": "How can FastAPI return a 202 Accepted response and then process data in the background?",
+      "faithfulness": 0.75,
+      "answer_relevancy": 0.9555624356662884
+    },
+    {
+      "id": "q081",
+      "category": "configuration",
+      "question": "How can I change the URLs used for FastAPI's automatic documentation?",
+      "faithfulness": 0.8571428571428571,
+      "answer_relevancy": 0.9685266627779588
+    },
+    {
+      "id": "q017",
+      "category": "factual",
+      "question": "How do nested Pydantic models work in FastAPI request bodies?",
+      "faithfulness": null,
+      "answer_relevancy": 0.9415134618082809
+    },
+    {
+      "id": "q046",
+      "category": "factual",
+      "question": "How do I enable CORS in FastAPI?",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9939453413600562
+    },
+    {
+      "id": "q075",
+      "category": "comparison",
+      "question": "What is the difference between running one FastAPI process and multiple workers?",
+      "faithfulness": null,
+      "answer_relevancy": 0.9309616489886516
+    },
+    {
+      "id": "q067",
+      "category": "testing",
+      "question": "How do I test a FastAPI WebSocket endpoint?",
+      "faithfulness": 0.8571428571428571,
+      "answer_relevancy": 0.9641074307250276
+    },
+    {
+      "id": "q047",
+      "category": "diagnostic",
+      "question": "Why might a browser reject a cross-origin FastAPI request even though the endpoint itself works?",
+      "faithfulness": null,
+      "answer_relevancy": 0.8846831269910185
+    },
+    {
+      "id": "q099",
+      "category": "use_case",
+      "question": "If I need to send an email notification after an API action, what FastAPI feature do the docs recommend for a small background task?",
+      "faithfulness": null,
+      "answer_relevancy": 0.9519459589080043
+    },
+    {
+      "id": "q105",
+      "category": "issue_based",
+      "question": "Why might Gunicorn workers hang or consume memory indefinitely when running a FastAPI app?",
+      "faithfulness": null,
+      "answer_relevancy": 0.956821049924974
+    }
+  ]
+}
