@@ -8,6 +8,7 @@ Usage:
 import os
 from dotenv import load_dotenv
 from groq import Groq
+from langfuse import observe
 
 load_dotenv()
 
@@ -41,6 +42,7 @@ Retrieved sources:
 Answer the question using only the sources above. Cite sources like [Source 1], [Source 2] etc."""
 
 
+@observe(name="generation")
 def generate_answer(question: str, chunks: list[dict]) -> str:
     if not GROQ_API_KEY:
         return ("No GROQ_API_KEY found. Add it to your .env file. "

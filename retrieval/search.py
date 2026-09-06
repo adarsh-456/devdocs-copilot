@@ -6,8 +6,9 @@ Usage:
     python -m retrieval.search
 """
 from retrieval.embed_store import get_model, get_collection
+from langfuse import observe
 
-
+@observe(name="retrieval")
 def search(query: str, top_k: int = 5):
     model = get_model()
     collection = get_collection()
