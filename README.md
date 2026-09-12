@@ -139,9 +139,34 @@ devdocs-copilot/
 | UI | Streamlit |
 | Data source | FastAPI's public GitHub repo (docs + issues) |
 
+
+## 7 since anyone cloning your repo needs to know this is a separate setup step for Observability (Langfuse)
+
+  This project uses a self-hosted Langfuse instance (via Docker) for tracing.
+  Langfuse's server is **not** part of this repo — it runs as separate infrastructure.
+
+  **One-time setup:**
+  ```bash
+  git clone https://github.com/langfuse/langfuse.git langfuse-server
+  cd langfuse-server
+  docker compose up -d
+  ```
+
+  Then visit `http://localhost:3000`, create an account/project, and add your
+  API keys to `.env`:
+
+  LANGFUSE_PUBLIC_KEY=pk-lf-...
+  LANGFUSE_SECRET_KEY=sk-lf-...
+  LANGFUSE_HOST=http://localhost:3000
+
+
+  Every question asked (via the UI or `generation/pipeline.py`) produces a
+  trace showing retrieval and generation as connected, timed spans — useful
+  for debugging *why* an answer was wrong (bad retrieval vs. bad generation).
+
 ---
 
-## 7. Known limitations (honest, as of Stage 1)
+## 8. Known limitations (honest, as of Stage 1)
 
 - Chunking is simple fixed-size splitting — no smart splitting by
   section/heading yet, which sometimes hurts retrieval precision on
@@ -154,10 +179,10 @@ devdocs-copilot/
 
 ---
 
-## 8. Roadmap
+## 9. Roadmap
 
 - [done] **Stage 1** — Ingestion → chunking → embedding → retrieval → generation → UI
 - [ ] **Stage 1b** — Hybrid search (BM25 + embeddings) and re-ranking
-- [ ] **Stage 2** — Evaluation harness (RAGAS) with a golden question set
-- [ ] **Stage 3** — Observability with Langfuse tracing
+- [done] **Stage 2** — Evaluation harness (RAGAS) with a golden question set
+- [done] **Stage 3** — Observability with Langfuse tracing (self-hosted via Docker; traces retrieval + generation as connected spans per question, wired into both the pipeline and the Streamlit UI)
 - [ ] **Stage 4** — Guardrails (input filtering + grounding checks)
