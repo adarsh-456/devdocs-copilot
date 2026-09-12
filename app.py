@@ -7,8 +7,9 @@ Run with:
 import streamlit as st
 from pathlib import Path
 
-from retrieval.search import search
-from generation.generate import generate_answer
+# from retrieval.search import search
+# from generation.generate import generate_answer
+from generation.pipeline import ask
 
 DOCS_DIR = Path(__file__).resolve().parent / "data" / "docs"
 ISSUES_DIR = Path(__file__).resolve().parent / "data" / "issues"
@@ -44,15 +45,12 @@ if st.button("Ask", type="primary") and question.strip():
     if not index_built:
         st.error("Index isn't built yet. See the sidebar for setup steps.")
     else:
-        with st.spinner("Retrieving relevant sources..."):
-            chunks = search(question, top_k=top_k)
+        with st.spinner("Thinking..."):
+            answer, chunks = ask(question, top_k=top_k)
 
         if not chunks:
             st.warning("No relevant sources found for this question.")
         else:
-            with st.spinner("Generating answer..."):
-                answer = generate_answer(question, chunks)
-
             st.subheader("Answer")
             st.write(answer)
 
