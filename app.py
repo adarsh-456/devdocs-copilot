@@ -36,7 +36,7 @@ with st.sidebar:
     else:
         st.success("Ready to answer questions.")
 
-    top_k = st.slider("Number of sources to retrieve", min_value=2, max_value=10, value=5)
+    top_k = st.slider("Number of sources to retrieve", min_value=3, max_value=6, value=4)
 
 # --- Main: question input ---
 question = st.text_input("Ask a question about FastAPI:", placeholder="How do I add a background task?")
