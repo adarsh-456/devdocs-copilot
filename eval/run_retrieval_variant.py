@@ -29,11 +29,11 @@ def source_matches_expected(retrieved_source: str, expected: str) -> bool:
     return expected in retrieved_source
 
 
-def evaluate_question(question: str, expected: list, top_k: int) -> dict:
+def evaluate_question(question: str, expected: list, top_k: int, collection_name: str) -> dict:
     if not expected:
         return {"scored": False}
 
-    chunks = search(question, top_k=top_k)
+    chunks = search(question, top_k=top_k, collection_name=collection_name)
     retrieved = [c["source"] for c in chunks]
 
     match_ranks = []
@@ -48,14 +48,14 @@ def evaluate_question(question: str, expected: list, top_k: int) -> dict:
     return {"scored": True, "hit": hit, "mrr": mrr, "precision": precision}
 
 
-def main(top_k: int, run_name: str):
+def main(top_k: int, run_name: str, collection_name: str, extra_params: dict = None):
     records = load_dataset()
     scored = []
     by_category = defaultdict(list)
 
     for i, r in enumerate(records, 1):
         print(f"[{i}/{len(records)}] {r['id']}", end="\r")
-        result = evaluate_question(r["question"], r.get("expected_source_contains", []), top_k)
+        result = evaluate_question(r["question"], r.get("expected_source_contains", []), top_k,collection_name)
         if result["scored"]:
             scored.append(result)
             by_category[r["category"]].append(result)
@@ -84,14 +84,17 @@ def main(top_k: int, run_name: str):
     mlflow.set_experiment("devdocs-copilot-rag-eval")
 
     with mlflow.start_run(run_name=run_name):
-        mlflow.log_params({
-            "variant_type": "top_k_change",
+        params = {
             "retrieval_top_k": top_k,
-            "chunk_size_words": 220,
+            "collection": collection_name,
             "embedding_model": "BAAI/bge-small-en-v1.5",
             "hybrid_search": False,
             "reranker": False,
-        })
+        }
+        if extra_params:
+            params.update(extra_params)
+        mlflow.log_params(params)
+
         mlflow.log_metrics({
             "retrieval_hit_rate": overall["hit_rate"],
             "retrieval_mrr": overall["mrr"],
@@ -104,5 +107,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--top_k", type=int, default=5)
     parser.add_argument("--run_name", type=str, default="variant")
+    parser.add_argument("--collection", type=str, default="devdocs_copilot")
+    parser.add_argument("--chunk_size", type=int, default=None)
+    parser.add_argument("--overlap", type=int, default=None)
     args = parser.parse_args()
-    main(args.top_k, args.run_name)
+
+    extra = {}
+    if args.chunk_size:
+        extra["chunk_size_words"] = args.chunk_size
+    if args.overlap:
+        extra["chunk_overlap_words"] = args.overlap
+
+    main(args.top_k, args.run_name, args.collection, extra)

@@ -1,17 +1,18 @@
 """
 Given a question, embeds it and retrieves the top-k most relevant chunks
-from the Chroma index.
-
-Usage:
-    python -m retrieval.search
+from a specified Chroma collection (defaults to the main baseline collection).
 """
-from retrieval.embed_store import get_model, get_collection
+from dotenv import load_dotenv
+load_dotenv()
+
 from langfuse import observe
+from retrieval.embed_store import get_model, get_collection, DEFAULT_COLLECTION_NAME
+
 
 @observe(name="retrieval")
-def search(query: str, top_k: int = 5):
+def search(query: str, top_k: int = 5, collection_name: str = DEFAULT_COLLECTION_NAME):
     model = get_model()
-    collection = get_collection()
+    collection = get_collection(collection_name)
 
     query_embedding = model.encode([query], normalize_embeddings=True).tolist()[0]
 
@@ -30,7 +31,7 @@ def search(query: str, top_k: int = 5):
             "text": text,
             "source": meta.get("source", "unknown"),
             "type": meta.get("type", "unknown"),
-            "score": 1 - dist,  # convert distance to a rough similarity score
+            "score": 1 - dist,
         })
     return hits
 
