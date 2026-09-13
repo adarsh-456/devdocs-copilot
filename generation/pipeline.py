@@ -12,7 +12,7 @@ from generation.generate import generate_answer
 
 
 @observe(name="ask_question")
-def ask(question: str, top_k: int = 5):
+def ask(question: str, top_k: int = 4):
     chunks = search(question, top_k=top_k)
     answer = generate_answer(question, chunks)
     return answer, chunks

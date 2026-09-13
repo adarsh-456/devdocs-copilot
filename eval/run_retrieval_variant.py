@@ -13,6 +13,8 @@ from dotenv import load_dotenv
 load_dotenv()
 import mlflow
 from retrieval.search import search
+from retrieval.hybrid_search import hybrid_search
+from retrieval.reranker import rerank
 
 DATASET_PATH = Path(__file__).resolve().parent / "golden_questions.json"
 
@@ -29,11 +31,17 @@ def source_matches_expected(retrieved_source: str, expected: str) -> bool:
     return expected in retrieved_source
 
 
-def evaluate_question(question: str, expected: list, top_k: int, collection_name: str) -> dict:
+def evaluate_question(question: str, expected: list, top_k: int, collection_name: str, use_hybrid: bool = False, use_reranker: bool = False) -> dict:
     if not expected:
         return {"scored": False}
-
-    chunks = search(question, top_k=top_k, collection_name=collection_name)
+    
+    if use_reranker:
+        candidates = search(question, top_k=15, collection_name=collection_name)
+        chunks = rerank(question, candidates, top_k=top_k)
+    elif use_hybrid:
+        chunks = hybrid_search(question, top_k=top_k, collection_name=collection_name)
+    else:
+        chunks = search(question, top_k=top_k, collection_name=collection_name)
     retrieved = [c["source"] for c in chunks]
 
     match_ranks = []
@@ -48,14 +56,14 @@ def evaluate_question(question: str, expected: list, top_k: int, collection_name
     return {"scored": True, "hit": hit, "mrr": mrr, "precision": precision}
 
 
-def main(top_k: int, run_name: str, collection_name: str, extra_params: dict = None):
+def main(top_k: int, run_name: str, collection_name: str, extra_params: dict = None, use_hybrid: bool = False, use_reranker: bool = False):
     records = load_dataset()
     scored = []
     by_category = defaultdict(list)
 
     for i, r in enumerate(records, 1):
         print(f"[{i}/{len(records)}] {r['id']}", end="\r")
-        result = evaluate_question(r["question"], r.get("expected_source_contains", []), top_k,collection_name)
+        result = evaluate_question(r["question"], r.get("expected_source_contains", []), top_k, collection_name, use_hybrid, use_reranker)
         if result["scored"]:
             scored.append(result)
             by_category[r["category"]].append(result)
@@ -88,8 +96,8 @@ def main(top_k: int, run_name: str, collection_name: str, extra_params: dict = N
             "retrieval_top_k": top_k,
             "collection": collection_name,
             "embedding_model": "BAAI/bge-small-en-v1.5",
-            "hybrid_search": False,
-            "reranker": False,
+            "hybrid_search": use_hybrid,
+            "reranker": use_reranker,
         }
         if extra_params:
             params.update(extra_params)
@@ -110,6 +118,8 @@ if __name__ == "__main__":
     parser.add_argument("--collection", type=str, default="devdocs_copilot")
     parser.add_argument("--chunk_size", type=int, default=None)
     parser.add_argument("--overlap", type=int, default=None)
+    parser.add_argument("--hybrid", action="store_true")
+    parser.add_argument("--reranker", action="store_true")
     args = parser.parse_args()
 
     extra = {}
@@ -118,4 +128,4 @@ if __name__ == "__main__":
     if args.overlap:
         extra["chunk_overlap_words"] = args.overlap
 
-    main(args.top_k, args.run_name, args.collection, extra)
+    main(args.top_k, args.run_name, args.collection, extra, args.hybrid, args.reranker)

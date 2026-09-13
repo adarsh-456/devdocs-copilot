@@ -10,7 +10,7 @@ from retrieval.embed_store import get_model, get_collection, DEFAULT_COLLECTION_
 
 
 @observe(name="retrieval")
-def search(query: str, top_k: int = 5, collection_name: str = DEFAULT_COLLECTION_NAME):
+def search(query: str, top_k: int = 4, collection_name: str = DEFAULT_COLLECTION_NAME):
     model = get_model()
     collection = get_collection(collection_name)
 
